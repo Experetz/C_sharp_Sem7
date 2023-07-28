@@ -42,34 +42,27 @@ void PrintArray(int[,] array)
     }
 }
 
+string FindValueNumber (int [,] array, int i, int j)
+{
+    if ((i >=  array.GetLength(0) || i <= 0) || (j >=  array.GetLength(1) || j <= 0))
+    {
+        string message = "There is no such element in array";
+        return message;
+    }
+    else 
+    {
+        int temp = array[i,j];
+        string strvalue = temp.ToString();
+        return strvalue;
+    }
+}
+
 //------------------------------------------
-int countRow = Prompt("Please put number of Rows");
-int countColumn = Prompt("Please put number of Columns");
+int stringposition = Prompt("Please put position in Rows");
+int columnposition = Prompt("Please put position in Columns");
 
-int [,] array = FillRandomArray(countRow, countColumn);
+int [,] array = FillRandomArray(4, 5);
 PrintArray(array);
+string value = FindValueNumber(array, stringposition, columnposition);
+Console.WriteLine($"The value of requested number is {value}");
 
-/*int findNumber = Prompt("Please put a number you want to find");
-if (findNumber > countColumn * countRow) 
-{
-    Console.WriteLine("There is no such number in array");
-}
-else 
-{
-    Console.Write(findNumber - 1 / countRow);
-    Console.Write(findNumber - 1 % countRow);
-    
-    //($"The position of your element in array is {array[findNumber -1]/ countRow, array[findNumber - 1] % countColumn} ");
-}    
-*/
-int number = Prompt("Введите номер элемента");
-if (number > countColumn * countRow)
-{
-    Console.WriteLine("Элемента с таким индексом нет в массиве");
-}
-else
-{
-    //Console.WriteLine((number - 1) / countRow);
-    //Console.WriteLine((number - 1) % countColum);
-    Console.WriteLine($"Заначение элемента {array[(number - 1) / countRow, (number - 1) % countColumn]}");
-}
